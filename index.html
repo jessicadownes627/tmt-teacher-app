@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First Five</title>
+    <meta
+      name="description"
+      content="A lightweight classroom prompt app that turns live headlines into fast discussion cards."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="phone-frame">
+        <div class="ambient-orb orb-one"></div>
+        <div class="ambient-orb orb-two"></div>
+
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Talk More Tonight: First Five</p>
+            <h1>Start a class discussion in minutes</h1>
+            <p class="subtext">Build thinking, speaking, and reasoning-fast.</p>
+          </div>
+          <div class="status-pill" id="feedStatus" aria-live="polite">Ready for today’s discussion</div>
+        </header>
+
+        <section class="screen active" id="entryScreen" aria-labelledby="entryTitle">
+          <div class="screen-copy">
+            <p class="section-label">Start here</p>
+            <p class="subtext">Kick off a focused, real-world discussion.</p>
+          </div>
+
+          <div class="grade-grid" role="group" aria-label="Choose student group">
+            <button class="option-card option-card-primary" data-mode="3-5" type="button">
+              <span class="option-title">Grades 3–5 <span class="option-arrow" aria-hidden="true">→</span></span>
+              <span class="option-copy">Build confidence with simple, structured thinking.</span>
+            </button>
+            <button class="option-card option-card-primary" data-mode="6-8" type="button">
+              <span class="option-title">Grades 6–8 <span class="option-arrow" aria-hidden="true">→</span></span>
+              <span class="option-copy">Practice reasoning, discussion, and defending ideas.</span>
+            </button>
+            <button class="option-card option-card-support" data-mode="esl" type="button">
+              <span class="option-kicker">Extra support</span>
+              <span class="option-title">Sentence starters</span>
+              <span class="option-copy">Support every student in explaining their thinking.</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="screen" id="cardScreen" aria-labelledby="cardTitle">
+          <div class="card-stack">
+            <article class="discussion-card" id="discussionCard">
+              <div class="card-meta">
+                <div class="card-meta-copy">
+                  <p class="section-label">Today's Topic</p>
+                  <p class="curriculum-label" id="curriculumLabel">Science Spotlight</p>
+                </div>
+                <div class="card-badges">
+                  <span class="badge badge-curation is-hidden" id="curationBadge">Top Pick</span>
+                  <span class="badge" id="modeBadge">Grades 3–5</span>
+                </div>
+              </div>
+
+              <div class="headline-wrap">
+                <h2 class="headline" id="cardTitle">Loading...</h2>
+                <p class="why-it-matters" id="whyItMatters"></p>
+                <section class="headline-citation" aria-labelledby="sourceLine">
+                  <p class="source-line" id="sourceLine">LIVE HEADLINE</p>
+                  <p class="real-headline" id="realHeadline">Finding a live headline for you.</p>
+                  <div class="source-meta-row">
+                    <p class="source-meta" id="sourceMeta">Live feed</p>
+                    <span class="freshness-badge is-hidden" id="freshnessBadge">Today</span>
+                  </div>
+                  <a class="source-link" id="sourceLink" href="#" target="_blank" rel="noreferrer noopener">
+                    Read more →
+                  </a>
+                </section>
+              </div>
+
+              <section class="prompt-block">
+                <p class="prompt-label">Main Question</p>
+                <p class="main-question" id="mainQuestion">One strong question is on the way.</p>
+              </section>
+
+              <section class="prompt-block">
+                <p class="prompt-label">Follow-ups</p>
+                <ul class="followups" id="followUps"></ul>
+                <p class="teacher-move" id="teacherMove"></p>
+              </section>
+
+              <section class="quick-write" aria-labelledby="quickWriteTitle">
+                <p class="prompt-label" id="quickWriteTitle">Quick Write</p>
+                <p id="quickWrite">Write one sentence explaining your opinion.</p>
+              </section>
+            </article>
+
+            <div class="controls">
+              <button class="ghost-button" id="backButton" type="button">Change group</button>
+              <button class="primary-button" id="shuffleButton" type="button">Give me another</button>
+            </div>
+
+            <div class="controls">
+              <button class="secondary-button" id="eslButton" type="button" aria-pressed="false">
+                Show sentence starters
+              </button>
+              <button class="ghost-button" id="unlockButton" type="button">Unlock Unlimited</button>
+            </div>
+
+            <div class="paywall-note" id="paywallNote" aria-live="polite"></div>
+
+            <details class="debug-panel">
+              <summary>Debug view</summary>
+              <pre id="debugOutput">Waiting for headlines.</pre>
+            </details>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <template id="followUpTemplate">
+      <li class="followup-item"></li>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
